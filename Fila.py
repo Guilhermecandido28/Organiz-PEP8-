@@ -25,15 +25,12 @@ class Fila:
         return f'Cliente {cliente_atual} dirija-se ao caixa: {caixa}'
 
     @classmethod
-    def estatistica(self, dia: str, agencia: int, options: bool = True) -> dict:
+    def estatistica(cls, dia: str, agencia: int, options: bool = True) -> dict:
         if options:
-            estatistica = {}
-            estatistica["dia"] = dia
-            estatistica["agencia"] = agencia
-            estatistica["clientes"] = self.clientes_atendidos
-            estatistica["quantidade_clientes"] = len(self.clientes_atendidos)
+            estatistica = {"dia": dia, "agencia": agencia, "clientes": cls.clientes_atendidos,
+                           "quantidade_clientes": len(cls.clientes_atendidos)}
 
         else:
-            estatistica = {f'No dia {dia} a {agencia} atendeu {len(self.clientes_atendidos)} clientes.'}
+            estatistica = {f'No dia {dia} a {agencia} atendeu {len(cls.clientes_atendidos)} clientes.'}
 
         return estatistica
